@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 st.image("mobility_report.png")
-st.title("An ineractive App to visualize Google\'s Mobility Report")
+st.title("An interactive App to visualize Google\'s Mobility Report")
 st.write("This Web Application aims to help visualize Google's Community Mobility Reports that can be found here:")
 st.write("google.com/covid19/mobility/")
 st.write("The purpose of the report is to see the changes that have occured with the policies being implemented to combat COVID-19. The movement trends across multiple geographies in multiple sectors such as workplaces, groceries and pharmacies etc. can be found.")
@@ -44,9 +44,9 @@ if(df_interest.sub_region_1.all() != 'none'):
 	sub_region = st.sidebar.selectbox('Please select a State',list(df_interest["sub_region_1"].unique()))
 	final_df = sub_reg_df.loc[sub_reg_df["sub_region_1"] == sub_region]
 	final_df.drop(['sub_region_2'], axis=1, inplace=True)
-	sectors = st.multiselect('Please select the categories of places',['retail_and_recreation','grocery_and_pharmacy','parks','transit_stations','workplaces','residential'],key=1)
+	sectors = st.multiselect('Please select the categories of places',['retail_and_recreation','grocery_and_pharmacy','parks','transit_stations','workplaces','residential'],key=2)
 	st.line_chart(final_df[sectors])
-	if(st.checkbox('Show raw data',key=2)):
+	if(st.checkbox('Show raw data',key=3)):
 		st.subheader('Raw data')
 		st.write(final_df)
 
@@ -59,9 +59,9 @@ if(df_interest.sub_region_2.all() != 'none'):
 	sub_region1_df = sub_reg2_df.loc[(sub_reg2_df["sub_region_1"] == sub_region1)]
 	sub_region2 = st.selectbox('Please select a County',list(sub_region1_df["sub_region_2"].unique()))
 	final_df = sub_region1_df.loc[(sub_region1_df["sub_region_2"] == sub_region2)]
-	sectors2 = st.multiselect('Please select the categories of places',['retail_and_recreation','grocery_and_pharmacy','parks','transit_stations','workplaces','residential'],key=2)
+	sectors2 = st.multiselect('Please select the categories of places',['retail_and_recreation','grocery_and_pharmacy','parks','transit_stations','workplaces','residential'],key=4)
 	st.line_chart(final_df[sectors2])
-	if(st.checkbox('Show raw data',key=3)):
+	if(st.checkbox('Show raw data',key=5)):
 		st.subheader('Raw data')
 		st.write(final_df)
 
